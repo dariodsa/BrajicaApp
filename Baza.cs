@@ -105,28 +105,35 @@ namespace BrajicaApp
             SortedList<string, double> lista = new SortedList<string,double>();
             string dbname = "";
             dbname = type == 1 ? "STANJA_C" : "STANJA_R";
-
-            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+lokacija+";Integrated Security=True;Connect Timeout=30"))
+            try
             {
-                con.Open();
-                using (SqlCommand command = new SqlCommand("SELECT * FROM "+dbname, con))
+                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + lokacija + ";Integrated Security=True;Connect Timeout=30"))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    //if (message) MessageBox.Show(reader.GetSqlValue(0).ToString() + reader.GetSqlValue(1).ToString());
+                    con.Open();
+                    try
                     {
-                        DateTime dateTime = reader.GetDateTime(2);
-                        //MessageBox.Show(reader.GetValue(1).ToString());
-                        double poluraspad = Convert.ToDouble(reader.GetValue(1));
-                        DateTime nowTime = DateTime.Now;
-                        var hours = (nowTime - dateTime).TotalHours;
-                        //MessageBox.Show(hours.ToString() + " " + poluraspad.ToString());
-                        double ans = Math.Pow(2.00, -hours / poluraspad);
-                        lista.Add(reader.GetString(0), ans);
+                        using (SqlCommand command = new SqlCommand("SELECT * FROM " + dbname, con))
+                        {
+                            SqlDataReader reader = command.ExecuteReader();
+                            while (reader.Read())
+                            //if (message) MessageBox.Show(reader.GetSqlValue(0).ToString() + reader.GetSqlValue(1).ToString());
+                            {
+                                DateTime dateTime = reader.GetDateTime(2);
+                                //MessageBox.Show(reader.GetValue(1).ToString());
+                                double poluraspad = Convert.ToDouble(reader.GetValue(1));
+                                DateTime nowTime = DateTime.Now;
+                                var hours = (nowTime - dateTime).TotalHours;
+                                //MessageBox.Show(hours.ToString() + " " + poluraspad.ToString());
+                                double ans = Math.Pow(2.00, -hours / poluraspad);
+                                lista.Add(reader.GetString(0), ans);
+                            }
+                        }
                     }
+                    catch(Exception e) { MessageBox.Show(e.Message); }
+                    con.Close();
                 }
-                con.Close();
             }
+            catch(Exception e) { MessageBox.Show(e.Message); }
             string k = "";
             double kol = 56;
             foreach(var D in lista)

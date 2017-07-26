@@ -20,4 +20,3 @@ C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\D
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\Pocetna.baml
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\vjezba.baml
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\BrajicaApp.exe.config
-C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.csprojResolveAssemblyReference.cache
