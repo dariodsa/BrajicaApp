@@ -1,4 +1,3 @@
-c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.csprojResolveAssemblyReference.cache
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\MainWindow.g.cs
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\App.g.cs
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp_MarkupCompile.cache
@@ -13,3 +12,11 @@ c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\D
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.csproj.GenerateResource.Cache
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.exe
 c:\users\dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.pdb
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\Baza.mdf
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\Baza_log.ldf
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp_Content.g.cs
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\Pocetna.g.cs
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\vjezba.g.cs
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\Pocetna.baml
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\vjezba.baml
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\BrajicaApp.exe.config

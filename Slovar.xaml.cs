@@ -22,6 +22,7 @@ namespace BrajicaApp
         public Slovar()
         {
             InitializeComponent();
+           
         }
     }
 }

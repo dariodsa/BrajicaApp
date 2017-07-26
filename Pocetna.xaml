@@ -1,0 +1,93 @@
+﻿<Page x:Class="BrajicaApp.Pocetna"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrajicaApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Pocetna"
+      Loaded="Page_Loaded"
+      >
+    <Page.Resources>
+        <Style TargetType="{x:Type ProgressBar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border BorderBrush="#D9DCE1" BorderThickness="1" Background="#E8E8E8" CornerRadius="0" Padding="0">
+                            <Grid x:Name="PART_Track">
+                                <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left" Fill="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="headline"
+                   Text="Brajevo pismo"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="28"
+                   />
+        <TextBlock Name="postotak"
+                   Grid.Column="4"
+                   Grid.Row="2"
+                   HorizontalAlignment="Left"
+                   FontSize="16"
+                   Text="98.8%"
+                   />
+        <ProgressBar Name="uspjeh"
+                     Grid.Column="3"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="3"
+                     Value="45"
+                     >
+            <ProgressBar.RenderTransform>
+                <RotateTransform Angle="-90"/>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <Button Name="vjezbanje"
+                Grid.Column="1"
+                Grid.Row="2"
+                Content="Vježba"
+                FontSize="25"
+                Click="vjezbanje_Click"
+                />
+        <Button Name="test"
+                Grid.Column="1"
+                Grid.Row="4"
+                Content="Test"
+                FontSize="25"
+                Click="test_Click"
+                />
+        <TextBlock Name="autor"
+                   Grid.Column="0"
+                   Grid.Row="6"
+                   Grid.ColumnSpan="35"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Right"
+                   FontSize="8"
+                   Text="Dario Sindičić 2017 FER"
+                   MouseWheel="autor_MouseWheel"
+                />
+    </Grid>
+</Page>

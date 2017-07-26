@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("BrajicaApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Dario Develop")]
 [assembly: AssemblyProduct("BrajicaApp")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
