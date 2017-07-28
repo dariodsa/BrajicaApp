@@ -48,16 +48,16 @@ namespace BrajicaApp
             dic.Add("nj", "111001");
             dic.Add("o", "10011");
             dic.Add("p", "11101");
-            dic.Add("q", "11111");
+            //dic.Add("q", "11111");
             dic.Add("r", "10111");
             dic.Add("s", "01101");
             dic.Add("š", "100101");
             dic.Add("t", "01111");
             dic.Add("u", "100011");
             dic.Add("v", "101011");
-            dic.Add("w", "011101");
+            /*dic.Add("w", "011101");
             dic.Add("x", "110011");
-            dic.Add("y", "110111");
+            dic.Add("y", "110111");*/
             dic.Add("z", "100111");
             dic.Add("ž", "011011");
             dic.Add("^", "010001");
@@ -90,8 +90,7 @@ namespace BrajicaApp
             
             foreach (var K in D)
             {
-                if ((K.Key[0] >= 'a' && K.Key[0] <= 'z') ||
-                     (K.Key[0] >= '1' && K.Key[0] <= '9'))
+                if ((K.Key[0] >= 'a' && K.Key[0] <= 'z'))
                 {
                     int kol = r.Next(2342, 2563);
                     double rj = kol / 100.0;
