@@ -48,13 +48,13 @@ namespace BrajicaApp
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            /*double kol = Baza.getGrade(1);
+            double kol = Baza.getGrade(1);
             double kol2 = Baza.getGrade(2);
             double rez = (kol + kol2) / 2.0;
             double sol = 1.0 / (1 + Math.Exp(-0.082 * (rez - 32)));
             
             uspjeh.Value = rez*100;
-            obojiUspjeh();*/
+            obojiUspjeh();
         }
 
         private void autor_MouseWheel(object sender, MouseWheelEventArgs e)

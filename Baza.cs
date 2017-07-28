@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace BrajicaApp
 {
     public static class Baza
     {
-        private static string lokacija = @"|DataDirectory|\Baza.mdf";//@"C:\Users\Dario\Documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\Baza.mdf";
+        private static string connectionString = "Data Source=Baza.sqlite;Version=3;";
 
         public static Dictionary<string, string> get()
         {
@@ -70,6 +71,16 @@ namespace BrajicaApp
             
             return dic;
         }
+        public static void init()
+        {
+            SQLiteConnection.CreateFile("Baza.sqlite");
+            SQLiteConnection con = new SQLiteConnection(connectionString);
+            con.Open();
+            SQLiteCommand com1 = new SQLiteCommand("create table STANJA_R (slovo nvarchar(25),poluraspad decimal(15,5),datum datetime)", con);
+            SQLiteCommand com2 = new SQLiteCommand("create table STANJA_C (slovo nvarchar(25),poluraspad decimal(15,5),datum datetime)", con);
+            com1.ExecuteNonQuery();
+            com2.ExecuteNonQuery();
+        }
         public static void callsPreBase()
         {
             var D = get();
@@ -82,10 +93,10 @@ namespace BrajicaApp
                 if ((K.Key[0] >= 'a' && K.Key[0] <= 'z') ||
                      (K.Key[0] >= '1' && K.Key[0] <= '9'))
                 {
-                    int kol = r.Next(1412, 1650);
+                    int kol = r.Next(2342, 2563);
                     double rj = kol / 100.0;
-                    DBOperation("INSERT INTO STANJA_R VALUES (N'" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
-                    DBOperation("INSERT INTO STANJA_C VALUES (N'" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
+                    DBOperation("INSERT INTO STANJA_R (slovo,poluraspad,datum) VALUES ('" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
+                    DBOperation("INSERT INTO STANJA_C (slovo,poluraspad,datum) VALUES ('" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
 
                     if (K.Key[0] >= 'a' && K.Key[0] <= 'z')
                     {
@@ -94,8 +105,8 @@ namespace BrajicaApp
                         else veliko = K.Key.ToUpper();
                         int kol2 = r.Next(1412, 1650);
                         double rj2 = kol / 100.0;
-                        DBOperation("INSERT INTO STANJA_R VALUES (N'" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
-                        DBOperation("INSERT INTO STANJA_C VALUES (N'" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
+                        DBOperation("INSERT INTO STANJA_R (slovo,poluraspad,datum) VALUES ('" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
+                        DBOperation("INSERT INTO STANJA_C (slovo,poluraspad,datum) VALUES ('" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
                     }
                 }
             }
@@ -105,35 +116,24 @@ namespace BrajicaApp
             SortedList<string, double> lista = new SortedList<string,double>();
             string dbname = "";
             dbname = type == 1 ? "STANJA_C" : "STANJA_R";
-            try
+            SQLiteConnection con = new SQLiteConnection(connectionString);
+            con.Open();
+            SQLiteCommand com = new SQLiteCommand("SELECT * FROM " + dbname, con);
+
+            SQLiteDataReader reader= com.ExecuteReader();
+            while(reader.Read())
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + lokacija + ";Integrated Security=True;Connect Timeout=30"))
-                {
-                    con.Open();
-                    try
-                    {
-                        using (SqlCommand command = new SqlCommand("SELECT * FROM " + dbname, con))
-                        {
-                            SqlDataReader reader = command.ExecuteReader();
-                            while (reader.Read())
-                            //if (message) MessageBox.Show(reader.GetSqlValue(0).ToString() + reader.GetSqlValue(1).ToString());
-                            {
-                                DateTime dateTime = reader.GetDateTime(2);
-                                //MessageBox.Show(reader.GetValue(1).ToString());
-                                double poluraspad = Convert.ToDouble(reader.GetValue(1));
-                                DateTime nowTime = DateTime.Now;
-                                var hours = (nowTime - dateTime).TotalHours;
-                                //MessageBox.Show(hours.ToString() + " " + poluraspad.ToString());
-                                double ans = Math.Pow(2.00, -hours / poluraspad);
-                                lista.Add(reader.GetString(0), ans);
-                            }
-                        }
-                    }
-                    catch(Exception e) { MessageBox.Show(e.Message); }
-                    con.Close();
+                DateTime dateTime = Convert.ToDateTime(reader["datum"]);
+                //MessageBox.Show(reader.GetValue(1).ToString());
+                double poluraspad = Convert.ToDouble(reader["poluraspad"]);
+                DateTime nowTime = DateTime.Now;
+                var hours = (nowTime - dateTime).TotalHours;
+                //MessageBox.Show(hours.ToString() + " " + poluraspad.ToString());
+                double ans = Math.Pow(2.00, -hours / poluraspad);
+                lista.Add(reader["slovo"].ToString(), ans);
+                    
                 }
-            }
-            catch(Exception e) { MessageBox.Show(e.Message); }
+            con.Close();
             string k = "";
             double kol = 56;
             foreach(var D in lista)
@@ -157,49 +157,34 @@ namespace BrajicaApp
             double ans = 0;
             double suma = 0;
             double kol = 0;
-            try
+            SQLiteConnection con = new SQLiteConnection(connectionString);
+            con.Open();
+            SQLiteCommand com = new SQLiteCommand("SELECT * FROM " + dbname, con);
+            SQLiteDataReader reader = com.ExecuteReader();
+            while (reader.Read())
+            
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + lokacija + ";Integrated Security=True;Connect Timeout=30"))
-                {
-                    con.Open();
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM " + dbname, con))
-                    {
-                        SqlDataReader reader = command.ExecuteReader();
-                        while (reader.Read())
-                        //if (message) MessageBox.Show(reader.GetSqlValue(0).ToString() + reader.GetSqlValue(1).ToString());
-                        {
-                            DateTime dateTime = reader.GetDateTime(2);
-                            //MessageBox.Show(reader.GetValue(1).ToString());
-                            double poluraspad = Convert.ToDouble(reader.GetValue(1));
-                            DateTime nowTime = DateTime.Now;
-                            var hours = (nowTime - dateTime).TotalHours;
-                            double ans2 = Math.Pow(2.00, -hours / poluraspad);
-                            suma += ans2;
-                            ++kol;
-                        }
-                    }
-                    con.Close();
-                }
+                DateTime dateTime = Convert.ToDateTime(reader["datum"]);
+                //MessageBox.Show(reader.GetValue(1).ToString());
+                double poluraspad = Convert.ToDouble(reader["poluraspad"]);
+                DateTime nowTime = DateTime.Now;
+                var hours = (nowTime - dateTime).TotalHours;
+                double ans2 = Math.Pow(2.00, -hours / poluraspad);
+                suma += ans2;
+                ++kol;
             }
-            catch (Exception e) { MessageBox.Show(e.Message); }
+            con.Close();                    
             ans = suma / kol;
             return ans;
             
         }
-        public static void DBOperation(string query,bool message=false)
+        public static void DBOperation(string query)
         {
-            //using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Baza.mdf;Integrated Security=True;Connect Timeout=30"))
-            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+lokacija+";Integrated Security=True;Connect Timeout=30"))
-            {
-                con.Open();
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                        if(message)MessageBox.Show(reader.GetSqlValue(0).ToString() + reader.GetSqlValue(1).ToString());
-                }
-                con.Close();
-            }
+            SQLiteConnection con = new SQLiteConnection(connectionString);
+            con.Open();
+            SQLiteCommand com = new SQLiteCommand(query, con);
+            com.ExecuteNonQuery();
+            con.Close();
         }
         public static void updateLetterState(string letter, int status,int type)
         {

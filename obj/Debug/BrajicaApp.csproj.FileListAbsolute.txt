@@ -21,3 +21,6 @@ C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\D
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\vjezba.baml
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\BrajicaApp.exe.config
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.csprojResolveAssemblyReference.cache
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.dll
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.xml
