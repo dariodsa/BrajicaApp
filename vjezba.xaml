@@ -26,9 +26,9 @@
                                                 </LinearGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
-                                        <Ellipse Margin="10,10,10,10"    Fill="#C0C0C0" Width="Auto" Height="Auto">
+                                        <Ellipse Margin="5,5,5,5"    Fill="#C0C0C0" Width="Auto" Height="Auto">
                                         </Ellipse>
-                                        <Ellipse x:Name="Selected" Margin="10,10,10,10"     Width="Auto" Height="Auto" >
+                                        <Ellipse x:Name="Selected" Margin="5,5,5,5"     Width="Auto" Height="Auto" >
                                             <Ellipse.Fill>
                                                 <SolidColorBrush Color="Navy"   />
                                             </Ellipse.Fill>

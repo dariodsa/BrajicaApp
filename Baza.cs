@@ -96,6 +96,8 @@ namespace BrajicaApp
                     int kol = r.Next(2342, 2563);
                     double rj = kol / 100.0;
                     DBOperation("INSERT INTO STANJA_R (slovo,poluraspad,datum) VALUES ('" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
+                    kol = r.Next(2342, 2563);
+                    rj = kol / 100.0;
                     DBOperation("INSERT INTO STANJA_C (slovo,poluraspad,datum) VALUES ('" + K.Key + "',"+rj+",CURRENT_TIMESTAMP)");
 
                     if (K.Key[0] >= 'a' && K.Key[0] <= 'z')
@@ -103,9 +105,11 @@ namespace BrajicaApp
                         string veliko = "";
                         if (K.Key.Length > 1) veliko = K.Key[0].ToString().ToUpper() + K.Key.Substring(1);
                         else veliko = K.Key.ToUpper();
-                        int kol2 = r.Next(1412, 1650);
+                        int kol2 = r.Next(2342, 2562);
                         double rj2 = kol / 100.0;
                         DBOperation("INSERT INTO STANJA_R (slovo,poluraspad,datum) VALUES ('" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
+                        kol2 = r.Next(2342, 2562);
+                        rj2 = kol / 100.0;
                         DBOperation("INSERT INTO STANJA_C (slovo,poluraspad,datum) VALUES ('" + veliko + "',"+rj2+",CURRENT_TIMESTAMP)");
                     }
                 }

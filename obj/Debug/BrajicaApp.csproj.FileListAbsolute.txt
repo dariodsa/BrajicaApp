@@ -23,3 +23,4 @@ C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\D
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.dll
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\bin\Debug\System.Data.SQLite.xml
+C:\Users\Dario\documents\visual studio 2015\Projects\BrajicaApp\BrajicaApp\obj\Debug\BrajicaApp.csprojResolveAssemblyReference.cache

@@ -56,7 +56,7 @@ namespace BrajicaApp
         public bool isEmpty()
         {
             for (int i = 0; i < 6; ++i)
-                if (klikani[i]) return false;
+                if (buttons[i].IsChecked==true) return false;
             return true;
         }
         private void table()
