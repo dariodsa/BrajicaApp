@@ -165,10 +165,11 @@ namespace BrajicaApp
             
             {
                 DateTime dateTime = Convert.ToDateTime(reader["datum"]);
-                //MessageBox.Show(reader.GetValue(1).ToString());
+                
                 double poluraspad = Convert.ToDouble(reader["poluraspad"]);
-                DateTime nowTime = DateTime.Now;
+                DateTime nowTime = DateTime.Now.ToUniversalTime();
                 var hours = (nowTime - dateTime).TotalHours;
+                //MessageBox.Show(hours + " " + poluraspad);
                 double ans2 = Math.Pow(2.00, -hours / poluraspad);
                 suma += ans2;
                 ++kol;

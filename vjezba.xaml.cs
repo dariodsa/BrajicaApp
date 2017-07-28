@@ -34,7 +34,7 @@ namespace BrajicaApp
         {
             InitializeComponent();
             //Baza.init();
-            Baza.callsPreBase();
+            //Baza.callsPreBase();
             Sentence.rjecnik = Baza.get();
             
             //Baza.DBOperation("SELECT * FROM STANJA_R", true);
